@@ -30,7 +30,7 @@
 
 using namespace fltk;
 
-class AnsiWidget : public Widget {
+class FL_API AnsiWidget : public Widget {
     public:
     AnsiWidget(int x, int y, int w, int h, int defsize);
     virtual ~AnsiWidget();
