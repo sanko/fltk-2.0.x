@@ -6,7 +6,7 @@
 // On purpose, I do NOT provide a fltk method to turn a file
 // into a pixmap.  This program uses a rather simplistic one.
 //
-// Copyright 1998-2006 by Bill Spitzak and others.
+// Copyright 1998-2010 by Bill Spitzak and others.
 //
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Library General Public
@@ -26,20 +26,22 @@
 // Please report all bugs and problems to "fltk-bugs@fltk.org".
 //
 
-#include <fltk/Fl.h>
-#include <fltk/Fl_Box.h>
-#include <fltk/Fl_Window.h>
-#include <fltk/Fl_Button.h>
-#include <fltk/Fl_Pixmap.h>
+#include <fltk/Widget.h>
+#include <fltk/Window.h>
+#include <fltk/Button.h>
+#include <fltk/xpmImage.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-#include <fltk/fl_file_chooser.h>
-#include <fltk/fl_message.h>
+#include <fltk/file_chooser.h>
+#include <fltk/ask.h>
+#include <fltk/run.h>
+#include <fltk/error.h>
+#include <fltk/visual.h>
 
-Fl_Box *b;
-Fl_Window *w;
+fltk::Widget *b;
+fltk::Window *w;
 
 char **data;
 int sizeofdata;
@@ -55,7 +57,7 @@ static int hexdigit(int x) {
 int load_file(const char *name) {
   FILE *f = fopen(name,"r");
   if (!f) {
-    fl_message("Can't open %s, %s",name,strerror(errno));
+    fltk::message("Can't open %s, %s",name,strerror(errno));
     return 0;
   }
   if (data) {
@@ -119,11 +121,11 @@ int load_file(const char *name) {
   return i;
 }
 
-Fl_Pixmap *pixmap;
+fltk::xpmImage *pixmap;
 void newpixmap() {
   delete pixmap;
-  pixmap = new Fl_Pixmap(data);
-  pixmap->label(b);
+  pixmap = new fltk::xpmImage(data);
+  b->image(pixmap);
   w->redraw();
 }
 
@@ -137,10 +139,10 @@ void file_cb(const char *n) {
   newpixmap();
 }
 
-void button_cb(Fl_Widget *,void *) {
-  fl_file_chooser_callback(file_cb);
-  fl_file_chooser("XPM file","*.xpm",name);
-  fl_file_chooser_callback(0);
+void button_cb(fltk::Widget *,void *) {
+  fltk::file_chooser_callback(file_cb);
+  fltk::file_chooser("XPM file","*.xpm",name);
+  fltk::file_chooser_callback(0);
 }
 
 int dvisual = 0;
@@ -151,17 +153,19 @@ int arg(int, char **argv, int &i) {
 
 int main(int argc, char **argv) {
   int i = 1;
-  if (Fl::args(argc,argv,i,arg) < argc)
-    Fl::fatal(" -8 # : use default visual\n%s\n",Fl::help);
+  if (fltk::args(argc,argv,i,arg) < argc)
+    fltk::fatal(" -8 # : use default visual\n%s\n",fltk::help);
 
-  Fl_Window window(400,400); ::w = &window;
-  Fl_Box b(0,0,window.w(),window.h()); ::b = &b;
-  Fl_Button button(5,5,100,35,"load");
+  fltk::Window window(400,400); ::w = &window;
+  window.begin();
+  fltk::Widget b(0,0,window.w(),window.h()); ::b = &b;
+  fltk::Button button(5,5,100,35,"load");
   button.callback(button_cb);
-  if (!dvisual) Fl::visual(FL_RGB);
+  if (!dvisual) fltk::visual(fltk::RGB);
+  window.end();
   window.resizable(window);
   window.show(argc,argv);
-  return Fl::run();
+  return fltk::run();
 }
 
 //

@@ -162,6 +162,7 @@ TARGETS = \
 	output$(EXEEXT) \
 	pack$(EXEEXT) \
 	pixmap$(EXEEXT) \
+	pixmap_browser$(EXEEXT) \
 	progress$(EXEEXT) \
 	radio$(EXEEXT) \
 	qubix$(EXEEXT) \
