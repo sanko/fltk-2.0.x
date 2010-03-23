@@ -312,7 +312,7 @@ void* fltk::foreach(const AssociationType* at, const Widget* wg, AssociationFunc
 
     if (!node) return 0;
 
-    return foreach(node, at, fkt);
+    return:: foreach(node, at, fkt);
 
   } else {
 
@@ -322,7 +322,7 @@ void* fltk::foreach(const AssociationType* at, const Widget* wg, AssociationFunc
 
       while (node) {
 
-        void * res = foreach(node, at, fkt);
+        void * res =:: foreach(node, at, fkt);
 
         if (res) return res;
 
