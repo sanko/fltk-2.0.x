@@ -1,0 +1,125 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "fltk2"=".\fltk2.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "fltk2_gl"=".\fltk2_gl.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fltk2_images
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fltk2
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "fltk2_glut"=".\fltk2_glut.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fltk2
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fltk2_gl
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "fltk2_images"=".\fltk2_images.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fltk2_jpeg
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fltk2_png
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fltk2_z
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fltk2
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "fltk2_jpeg"=".\fltk2_jpeg.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "fltk2_png"=".\fltk2_png.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "fltk2_z"=".\fltk_z.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+
