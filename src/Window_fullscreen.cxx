@@ -180,7 +180,7 @@ static void innards(Window* window, bool fullscreen, int X, int Y, int W, int H)
 }
 
 void Window::maximize() {
-#ifdef __WIN32__
+#ifdef WIN32
   // ShowWindow - http://msdn.microsoft.com/en-us/library/ms633548.aspx
   // idea from Edzard Egberts - thanks
 
