@@ -35,6 +35,13 @@
 #include <config.h>
 #include <fltk/Cursor.h>
 #include <fltk/Window.h>
+
+#if defined(_WIN32) && WINVER<0x0500
+// Make the headers declare the functions needed for BITMAPV5HEADER:
+# undef WINVER
+# define WINVER 0x0500
+#endif
+
 #include <fltk/x.h>
 #if defined(USE_X11) && defined(USE_XCURSOR)
 #include <X11/Xcursor/Xcursor.h>
