@@ -285,7 +285,9 @@ FL_API fltk::Cursor *fltk::cursor(void *raw) {
 
 //thanx to gtk team for reference
 //http://www.dotnet247.com/247reference/msgs/13/66301.aspx
+#if defined(__GNUC__)
 #warning we assume PixelType = 6 ARGB32 in test it is true for color images
+#endif /*__GNUC__*/
 
 #include <stdio.h>
 
