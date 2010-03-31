@@ -94,7 +94,7 @@ int Font::sizes(int*& sizep) {
 #if defined(__BORLANDC__) || defined(__DMC__)
     EnumFontFamiliesW(dc, ucs, (FONTENUMPROCA)EnumSizeCb, 0);
 #else
-    EnumFontFamiliesW(dc, ucs, EnumSizeCb, 0);
+    EnumFontFamiliesW(dc, ucs, (FONTENUMPROCW)EnumSizeCb, 0);
 #endif
   } else {
     EnumFontFamiliesA(dc, name_, (FONTENUMPROCA)EnumSizeCb, 0);
